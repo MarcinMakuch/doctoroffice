@@ -43,4 +43,6 @@ public class Client {
 
     @Length(max = 500)
     private String comments;
+
+    private String test;
 }
