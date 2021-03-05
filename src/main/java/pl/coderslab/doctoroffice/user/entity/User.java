@@ -28,6 +28,4 @@ public class User {
     @Length(min = 3, max = 30)
     private String lastName;
 
-
-
 }

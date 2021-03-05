@@ -1,5 +1,6 @@
 package pl.coderslab.doctoroffice.client.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.coderslab.doctoroffice.client.entity.Client;
 import pl.coderslab.doctoroffice.client.repository.ClientRepository;
@@ -10,13 +11,11 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class JpaClientService implements ClientService{
 
     private final ClientRepository clientRepository;
 
-    public JpaClientService(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
-    }
 
     public List<Client> getClients () {
         return clientRepository.findAll();

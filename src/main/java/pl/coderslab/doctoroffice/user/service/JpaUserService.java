@@ -1,5 +1,6 @@
 package pl.coderslab.doctoroffice.user.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.coderslab.doctoroffice.user.entity.User;
 import pl.coderslab.doctoroffice.user.repository.UserRepository;
@@ -9,13 +10,10 @@ import java.util.List;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class JpaUserService implements UserService {
 
     private final UserRepository userRepository;
-
-    public JpaUserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @Override
     public List<User> getUsers() {

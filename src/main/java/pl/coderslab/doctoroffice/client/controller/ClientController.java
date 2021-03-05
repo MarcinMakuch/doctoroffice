@@ -1,5 +1,6 @@
 package pl.coderslab.doctoroffice.client.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,14 +16,12 @@ import javax.validation.Valid;
 
 @Controller
 @Transactional
+@RequiredArgsConstructor
 @RequestMapping("/client")
 public class ClientController {
 
     private final JpaClientService jpaClientService;
 
-    public ClientController(JpaClientService jpaClientService) {
-        this.jpaClientService = jpaClientService;
-    }
 
     @GetMapping("")
     public String getClients(Model model) {
@@ -37,7 +36,7 @@ public class ClientController {
     }
     @PostMapping("/add")
     public String addClient(@Valid Client client, BindingResult result){
-        if (result.hasFieldErrors()) {
+        if (result.hasErrors()) {
             return "/client/form";
         }
         jpaClientService.addClient(client);

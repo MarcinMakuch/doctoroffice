@@ -24,7 +24,6 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-
     @NotNull
     @FutureOrPresent
     @DateTimeFormat(pattern = "yyyy-MM-dd")

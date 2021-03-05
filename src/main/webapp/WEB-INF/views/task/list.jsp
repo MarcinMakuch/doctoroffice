@@ -3,25 +3,29 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Użytkownicy</title>
+    <title>Wizyty</title>
 </head>
 <body>
 <a href='<c:url value="/"/>'><button>WRÓĆ</button></a>
 <br>
-<a href='<c:url value="/user/add"/>'><button>Dodaj nowego użytkownika</button></a>
+<a href='<c:url value="/task/add"/>'><button>Dodaj nową wizytę</button></a>
 <p><c:out value="${message}"/></p>
 <table border="1">
     <thead>
     <tr>
-        <th>Imię</th>
-        <th>Nazwisko</th>
+        <th>Rehabilitant</th>
+        <th>Pacjent</th>
+        <th>Data</th>
+        <th>Godzina</th>
     </tr>
-    <c:forEach items="${users}" var="user">
+    <c:forEach items="${tasks}" var="task">
         <tr>
-            <td><c:out value="${user.firstName}"/></td>
-            <td><c:out value="${user.lastName}"/></td>
-            <td><a href='<c:url value="/user/edit/${user.getId()}"/>'><button>Edytuj</button></a></td>
-            <td><a href='<c:url value="/user/confirm/${user.getId()}"/>'><button>Usuń</button></a></td>
+            <td><c:out value="${task.user.lastName}"/></td>
+            <td><c:out value="${task.client.lastName}"/></td>
+            <td><c:out value="${task.date}"/></td>
+            <td><c:out value="${task.time}"/></td>
+            <td><a href='<c:url value="/user/edit/${task.getId()}"/>'><button>Edytuj</button></a></td>
+            <td><a href='<c:url value="/user/confirm/${task.getId()}"/>'><button>Usuń</button></a></td>
         </tr>
     </c:forEach>
     </thead>
