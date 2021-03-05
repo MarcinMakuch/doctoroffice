@@ -4,10 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.doctoroffice.client.entity.Client;
 import pl.coderslab.doctoroffice.client.service.JpaClientService;
 import pl.coderslab.doctoroffice.task.entity.Task;
@@ -59,6 +56,17 @@ public class TaskController {
             return "/task/form";
         }
         jpaTaskService.addTask(task);
+        return "redirect:/task";
+    }
+    @GetMapping("/confirm/{id}")
+    public String deleteTask(Model model, @PathVariable Long id) {
+        Task task = jpaTaskService.findTask(id);
+        model.addAttribute("task", task);
+        return "task/confirm";
+    }
+    @GetMapping("/remove/{id}")
+    public String deleteTask(@PathVariable Long id) {
+        jpaTaskService.deleteTask(id);
         return "redirect:/task";
     }
 }

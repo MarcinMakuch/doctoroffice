@@ -31,10 +31,7 @@ public class JpaTaskService implements TaskService {
 
     @Override
     public void addTask(Task task) {
-     if (taskRepository.findTaskByDate(task.getDate()).equals(task.getDate())) {
-         System.out.println("data");
-     }
-        taskRepository.save(task);
+          taskRepository.save(task);
     }
 
     @Override

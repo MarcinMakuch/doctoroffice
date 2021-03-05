@@ -10,6 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
-    Task findTaskByDate(Date date);
-    Task findTaskByTime(LocalTime time);
+
 }

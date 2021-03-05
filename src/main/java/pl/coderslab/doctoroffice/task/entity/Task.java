@@ -9,6 +9,7 @@ import pl.coderslab.doctoroffice.user.entity.User;
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -38,5 +39,13 @@ public class Task {
 
     @ManyToOne
     private User user;
+
+  /*  @Basic
+    @Temporal(TemporalType.DATE)
+    private java.util.Date utilDate;
+
+    @Basic
+    @Temporal(TemporalType.TIME)
+    private java.util.Date utilTime;*/
 
 }
