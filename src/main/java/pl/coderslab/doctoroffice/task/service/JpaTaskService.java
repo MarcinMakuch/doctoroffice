@@ -6,6 +6,8 @@ import pl.coderslab.doctoroffice.task.entity.Task;
 import pl.coderslab.doctoroffice.task.repository.TaskRepository;
 
 import javax.transaction.Transactional;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +31,11 @@ public class JpaTaskService implements TaskService {
 
     @Override
     public void addTask(Task task) {
-          taskRepository.save(task);
+        Optional <Task> freeDate = taskRepository.manualFindDateAndTimeFromTasks(task.getDate(), task.getTime());
+        if (freeDate.isPresent()){
+            throw new IllegalStateException("data zajeta");
+        }
+        taskRepository.save(task);
     }
 
     @Override
@@ -41,6 +47,7 @@ public class JpaTaskService implements TaskService {
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
+
 }
 
 /*    Optional<Task> dateOptional = taskRepository.findTaskByDate(task.getDate());
