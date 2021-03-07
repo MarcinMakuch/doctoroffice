@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Doctor Office</title>
@@ -35,6 +36,9 @@ Dzisiejsze wizyty
         <th>Godzina</th>
     </tr>
     <c:forEach items="${tasks}" var="task">
+        <jsp:useBean id="now" class="java.util.Date"/>
+        <c:if test="${task.date = now}">
+        </c:if>
         <tr>
             <td><c:out value="${task.user.lastName}"/></td>
             <td><c:out value="${task.client.lastName}"/></td>
