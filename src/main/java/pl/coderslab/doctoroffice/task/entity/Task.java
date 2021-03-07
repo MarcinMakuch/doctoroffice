@@ -42,10 +42,10 @@ public class Task {
 
   /*  @Basic
     @Temporal(TemporalType.DATE)
-    private java.util.Date utilDate;
+    private Date utilDate;
 
     @Basic
     @Temporal(TemporalType.TIME)
-    private java.util.Date utilTime;*/
+    private Date utilTime;*/
 
 }

@@ -6,9 +6,12 @@ import pl.coderslab.doctoroffice.task.entity.Task;
 
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
+
+    List<Task> getAllByDateAndTime(Date date, LocalTime time);
 
 }

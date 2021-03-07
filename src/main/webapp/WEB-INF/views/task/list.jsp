@@ -24,8 +24,8 @@
             <td><c:out value="${task.client.lastName}"/></td>
             <td><c:out value="${task.date}"/></td>
             <td><c:out value="${task.time}"/></td>
-            <td><a href='<c:url value="/user/edit/${task.getId()}"/>'><button>Edytuj</button></a></td>
-            <td><a href='<c:url value="/user/confirm/${task.getId()}"/>'><button>Usuń</button></a></td>
+            <td><a href='<c:url value="/task/edit/${task.getId()}"/>'><button>Edytuj</button></a></td>
+            <td><a href='<c:url value="/task/confirm/${task.getId()}"/>'><button>Usuń</button></a></td>
         </tr>
     </c:forEach>
     </thead>

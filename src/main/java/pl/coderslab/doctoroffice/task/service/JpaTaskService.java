@@ -1,5 +1,6 @@
 package pl.coderslab.doctoroffice.task.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.coderslab.doctoroffice.task.entity.Task;
 import pl.coderslab.doctoroffice.task.repository.TaskRepository;
@@ -10,13 +11,10 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class JpaTaskService implements TaskService {
 
     private final TaskRepository taskRepository;
-
-    public JpaTaskService(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
 
 
     @Override

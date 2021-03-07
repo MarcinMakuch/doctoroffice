@@ -58,6 +58,22 @@ public class TaskController {
         jpaTaskService.addTask(task);
         return "redirect:/task";
     }
+    @GetMapping("/edit/{id}")
+    public String editTask(@PathVariable Long id, Model model){
+        model.addAttribute("task", jpaTaskService.findTask(id));
+        return "task/form";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String saveTask (@Valid Task task, BindingResult result){
+        if(result.hasErrors()){
+            return "/task/form";
+        }
+        jpaTaskService.updateTask(task);
+        return "redirect:/task";
+    }
+
+
     @GetMapping("/confirm/{id}")
     public String deleteTask(Model model, @PathVariable Long id) {
         Task task = jpaTaskService.findTask(id);
