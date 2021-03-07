@@ -6,7 +6,6 @@ import pl.coderslab.doctoroffice.task.entity.Task;
 import pl.coderslab.doctoroffice.task.repository.TaskRepository;
 
 import javax.transaction.Transactional;
-import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +45,10 @@ public class JpaTaskService implements TaskService {
     @Override
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
+    }
+    public List<Task> getAllByToday() {
+        Date date = new Date();
+        return taskRepository.findTasksByDateDay(date);
     }
 
 }

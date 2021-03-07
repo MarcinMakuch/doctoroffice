@@ -9,6 +9,7 @@ import pl.coderslab.doctoroffice.task.entity.Task;
 
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -18,4 +19,5 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("select t from Task t where t.date=?1 and t.time=?2")
     Optional <Task> manualFindDateAndTimeFromTasks(@Param("date") Date date, @Param("time") LocalTime time);
 
+    List<Task> findTasksByDateDay(Date date);
 }
