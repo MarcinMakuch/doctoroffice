@@ -8,7 +8,8 @@
 <body>
 <h1>An error has occurred.</h1>
 
-<p>Message: ${exception.message}</p>
+<p>Message: ${message}</p>
+
 
 <div style="color: #F00;">
     Error message: <%= exception.toString() %>

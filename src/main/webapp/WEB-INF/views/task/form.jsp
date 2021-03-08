@@ -9,7 +9,7 @@
 <a href='<c:url value="/task"/>'>
     <button>WRÓĆ</button>
 </a>
-
+<p><c:out value="${message}"/></p>
 <form:form method="post" modelAttribute="task">
     <form:hidden path="id"/>
     Rehabilitant: <br>
