@@ -17,10 +17,12 @@ public class JpaTaskService implements TaskService {
 
     private final TaskRepository taskRepository;
 
-
     @Override
     public List<Task> getTasks() {
         return taskRepository.findAll();
+    }
+    public List<Task> getSortedTasks() {
+        return taskRepository.getTasksOrderByDateAsc();
     }
 
     @Override
@@ -46,15 +48,12 @@ public class JpaTaskService implements TaskService {
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
-    public List<Task> getAllByToday() {
-        Date date = new Date();
-        return taskRepository.findTasksByDateDay(date);
+
+    public List<Task> getTodaySortedTasks(Date date) {
+        return taskRepository.getTodayTasksOrderByDateAsc(date);
     }
+
 
 }
 
-/*    Optional<Task> dateOptional = taskRepository.findTaskByDate(task.getDate());
-    Optional<Task> timeOptional = taskRepository.findTaskByTime(task.getTime());
-      if (dateOptional.isPresent() && timeOptional.isPresent()) {
-              throw new IllegalStateException("podany termin jest zajęty");
-              }*/
+

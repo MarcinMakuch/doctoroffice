@@ -19,5 +19,10 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("select t from Task t where t.date=?1 and t.time=?2")
     Optional <Task> manualFindDateAndTimeFromTasks(@Param("date") Date date, @Param("time") LocalTime time);
 
-    List<Task> findTasksByDateDay(Date date);
+    @Query("select t from Task t order by t.date asc")
+    List<Task> getTasksOrderByDateAsc();
+
+    @Query("select t from Task t where t.date=?1 order by t.date asc")
+    List<Task> getTodayTasksOrderByDateAsc(@Param("date") Date date);
+
 }

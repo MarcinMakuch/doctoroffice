@@ -14,10 +14,8 @@ import pl.coderslab.doctoroffice.user.service.JpaUserService;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
+
 
 @Controller
 @Transactional
@@ -42,20 +40,9 @@ public class TaskController {
 
     @GetMapping("")
     public String getTasks(Model model) {
-        model.addAttribute("tasks", jpaTaskService.getTasks());
+        model.addAttribute("tasks", jpaTaskService.getSortedTasks());
         return "task/list";
     }
-
-/*    @GetMapping("/test/{date}")
-    public String getDataTime(Model model, @PathVariable Date date) {
-       Optional <Task> free = jpaTaskService.freeDateTime(date);
-       if (free.isPresent()) {
-           model.addAttribute("message", "istnieje");
-       } else {
-           model.addAttribute("message", "nie istnieje");
-       }
-        return "task/test";
-    }*/
 
     @GetMapping("/add")
     public String formTask(Model model) {
