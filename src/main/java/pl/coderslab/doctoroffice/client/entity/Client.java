@@ -37,7 +37,7 @@ public class Client {
     private String email;
 
     @NotBlank
-    @Pattern(regexp="\\d{9}")
+    @Pattern(regexp="\\d{9}",message = "Numer telefonu musi mieć 9 cyfr")
     private String phoneNumber;
 
 
