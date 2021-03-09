@@ -21,6 +21,7 @@ public class JpaTaskService implements TaskService {
     public List<Task> getTasks() {
         return taskRepository.findAll();
     }
+
     public List<Task> getSortedTasks() {
         return taskRepository.getTasksOrderByDateAsc();
     }
@@ -34,7 +35,7 @@ public class JpaTaskService implements TaskService {
     public void addTask(Task task) {
         Optional <Task> freeDate = taskRepository.manualFindDateAndTimeFromTasks(task.getDate(), task.getTime());
         if (freeDate.isPresent()){
-            throw new IllegalStateException("data zajeta");
+            throw new IllegalStateException("Niestety wybrana data jest zajęta, wybierz inną datę.");
         }
         taskRepository.save(task);
     }
