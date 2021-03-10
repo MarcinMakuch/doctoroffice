@@ -1,6 +1,7 @@
 package pl.coderslab.doctoroffice.user.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.doctoroffice.user.entity.User;
 import pl.coderslab.doctoroffice.user.repository.UserRepository;
@@ -14,6 +15,7 @@ import java.util.List;
 public class JpaUserService implements UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public List<User> getUsers() {
@@ -27,7 +29,7 @@ public class JpaUserService implements UserService {
 
     @Override
     public void addUser(User user) {
-         userRepository.save(user);
+        userRepository.save(user);
     }
 
     @Override

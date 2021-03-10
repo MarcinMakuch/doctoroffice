@@ -7,7 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 
-
 @Entity
 @Table(name = User.TABLE_NAME)
 @NoArgsConstructor
@@ -27,5 +26,15 @@ public class User {
     @NotBlank
     @Length(min = 3, max = 30)
     private String lastName;
+
+    @Length(min = 5, max = 15)
+    @Column(unique = true)
+    private String userName;
+
+    @NotBlank
+    private String password;
+
+    private String role = "ROLE_USER";
+
 
 }
