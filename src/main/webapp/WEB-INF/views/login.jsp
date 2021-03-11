@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,7 +13,7 @@
 <body>
 <div class="container">
     <form class="form-signin" method="post" action="/login">
-        <h2 class="form-signin-heading">Proszę się zalogować</h2>
+        <h2 class="form-signin-heading">Pls zaloguj się do DoctorOffice</h2>
         <p>
             <label for="username" class="sr-only">Użytkownik</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="Użytkownik" required="" autofocus="">
@@ -22,6 +21,10 @@
         <p>
             <label for="password" class="sr-only">Hasło</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Hasło" required="">
+        </p>
+        <p>
+            <label for="rememberme" class="sr-only">Zapamiętaj mnie</label>
+            <input type="checkbox" id="rememberme" name="rememberme" class="form-control">
         </p>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Loguj</button>
     </form>
