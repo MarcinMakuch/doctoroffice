@@ -13,11 +13,6 @@ public class ApplicationUser implements UserDetails {
     private final List<? extends GrantedAuthority> grantedAuthorities;
     private final String password;
     private final String userName;
-    private final boolean isAccountNonExpired;
-    private final boolean isAccountNonLocked;
-    private final boolean isCredentialsNonExpired;
-    private final boolean isEnabled;
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -36,21 +31,21 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return isAccountNonExpired;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return isAccountNonLocked;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return isCredentialsNonExpired;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return isEnabled;
+        return true;
     }
 }
