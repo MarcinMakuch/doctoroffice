@@ -6,6 +6,13 @@
 <html>
 <head>
     <title>Doctor Office</title>
+<%--    <style>
+        body{
+            background-image: url("doctorofice-spine.jpg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+    </style>--%>
 </head>
 <body>
 <div>
