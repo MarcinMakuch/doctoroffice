@@ -1,4 +1,4 @@
-package pl.coderslab.doctoroffice.user;
+package pl.coderslab.doctoroffice;
 
 
 import org.springframework.stereotype.Controller;

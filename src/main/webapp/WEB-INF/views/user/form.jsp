@@ -16,8 +16,8 @@
     <form:input path="lastName"/>
     <form:errors path="lastName"/><br>
     <label>Nazwa użytkownika</label><br>
-    <form:input path="userName"/>
-    <form:errors path="userName"/><br>
+    <form:input path="username"/>
+    <form:errors path="username"/><br>
     <label>Hasło</label><br>
     <form:input path="password"/>
     <form:errors path="password"/><br>

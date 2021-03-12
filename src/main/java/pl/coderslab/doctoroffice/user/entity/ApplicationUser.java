@@ -2,31 +2,31 @@ package pl.coderslab.doctoroffice.user.entity;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
+
 
 @AllArgsConstructor
 public class ApplicationUser implements UserDetails {
 
-    private final List<? extends GrantedAuthority> grantedAuthorities;
-    private final String password;
-    private final String userName;
+    private User user;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return grantedAuthorities;
+        return Collections.singleton(new SimpleGrantedAuthority("USER"));
     }
 
     @Override
     public String getPassword() {
-        return password;
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return userName;
+        return user.getUsername();
     }
 
     @Override

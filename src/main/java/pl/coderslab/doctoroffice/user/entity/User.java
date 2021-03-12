@@ -29,12 +29,12 @@ public class User {
 
     @Length(min = 5, max = 15)
     @Column(unique = true)
-    private String userName;
+    private String username;
 
     @NotBlank
     private String password;
 
-    private String role = "ROLE_USER";
+    private String role = "USER";
 
 
 }
