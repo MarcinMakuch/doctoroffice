@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import pl.coderslab.doctoroffice.user.entity.ApplicationUserService;
 
-import javax.sql.DataSource;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
@@ -21,15 +20,26 @@ import java.util.concurrent.TimeUnit;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final ApplicationUserService applicationUserService;
-    private final DataSource dataSource;
+
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(applicationUserService);
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) {
+        auth.authenticationProvider(daoAuthenticationProvider());
+    }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/task/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/client/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/user/**").hasRole("ADMIN")
+                .antMatchers("/task/**", "/client/**").hasAnyAuthority("ADMIN", "USER")
+                .antMatchers("/user/**").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -48,29 +58,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login");
     }
 
-
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider());
-    }
-
-    @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(passwordEncoder());
-        provider.setUserDetailsService(applicationUserService);
-        return provider;
-    }
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
 
-/*
-auth.jdbcAuthentication()
-        .dataSource(dataSource)
-        .passwordEncoder(passwordEncoder())
-        .usersByUsernameQuery("SELECT username, password from users where username = ? ")
-        .authoritiesByUsernameQuery("SELECT username, role from users where username =?");*/
