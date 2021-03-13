@@ -34,7 +34,8 @@ public class User {
     @NotBlank
     private String password;
 
-    private String role = "ROLE_USER";
+    @NotBlank
+    private String role;
 
 
 }

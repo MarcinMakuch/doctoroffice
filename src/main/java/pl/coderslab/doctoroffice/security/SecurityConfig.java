@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import pl.coderslab.doctoroffice.user.entity.ApplicationUserService;
 
 import java.util.concurrent.TimeUnit;
@@ -30,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.authenticationProvider(daoAuthenticationProvider());
     }
 
@@ -38,7 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/task/**", "/client/**").hasAnyAuthority("ADMIN", "USER")
+                .antMatchers("/task/**").hasAnyAuthority("ADMIN", "USER")
+                .antMatchers("/client/**").hasAnyAuthority("ADMIN", "USER")
                 .antMatchers("/user/**").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
@@ -52,7 +52,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .key("godzinka")
                 .and()
                 .logout().logoutUrl("/logout")
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
                 .clearAuthentication(true)
                 .invalidateHttpSession(true).deleteCookies("JSESSIONID", "rememberme")
                 .logoutSuccessUrl("/login");
@@ -63,4 +62,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 }
+//&useUnicode=yes&characterEncoding=UTF-8
+
+/*http.csrf().disable()
+        .authorizeRequests()
+        .antMatchers("/task/**").hasAnyAuthority("USER", "ADMIN")
+        .antMatchers("/client/**").hasAnyAuthority("USER","ADMIN")
+        .antMatchers("/user/**").hasAuthority("ADMIN")
+        .anyRequest()
+        .authenticated()
+        .and()
+        .formLogin()
+        .loginPage("/login").permitAll()
+        .defaultSuccessUrl("/", true)
+        .and()
+        .rememberMe()
+        .tokenValiditySeconds((int) TimeUnit.HOURS.toSeconds(1))
+        .key("godzinka")
+        .and()
+        .logout().logoutUrl("/logout")
+        .clearAuthentication(true)
+        .invalidateHttpSession(true).deleteCookies("JSESSIONID", "rememberme")
+        .logoutSuccessUrl("/login");*/
 

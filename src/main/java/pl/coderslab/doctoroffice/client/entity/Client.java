@@ -40,7 +40,6 @@ public class Client {
     @Pattern(regexp="\\d{9}",message = "Numer telefonu musi mieć 9 cyfr")
     private String phoneNumber;
 
-
     @Length(max = 500)
     private String comments;
 

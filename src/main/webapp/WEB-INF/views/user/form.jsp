@@ -21,6 +21,9 @@
     <label>Hasło</label><br>
     <form:input path="password"/>
     <form:errors path="password"/><br>
+    <label>ROLE</label><br>
+    <form:input path="role"/>
+    <form:errors path="role"/><br>
     <button type="submit">Zapisz</button>
 </form:form>
 </body>
