@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/task/**").hasAnyAuthority("ADMIN", "USER")
                 .antMatchers("/client/**").hasAnyAuthority("ADMIN", "USER")
+                .antMatchers("/file/**").hasAnyAuthority("ADMIN", "USER")
                 .antMatchers("/user/**").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
@@ -62,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 }
-//&useUnicode=yes&characterEncoding=UTF-8
+
 
 
 

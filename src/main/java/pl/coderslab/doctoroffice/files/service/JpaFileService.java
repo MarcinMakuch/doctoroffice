@@ -3,6 +3,7 @@ package pl.coderslab.doctoroffice.files.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.coderslab.doctoroffice.files.entity.File;
+import pl.coderslab.doctoroffice.files.repository.FileRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -12,30 +13,30 @@ import java.util.List;
 @RequiredArgsConstructor
 public class JpaFileService implements FileService {
 
-    private final FileService fileService;
+    private final FileRepository fileRepository;
 
     @Override
     public List<File> getFiles() {
-        return fileService.getFiles();
+        return fileRepository.findAll();
     }
 
     @Override
     public File findFile(Long id) {
-        return fileService.findFile(id);
+        return fileRepository.getOne(id);
     }
 
     @Override
     public void addFile(File file) {
-        fileService.addFile(file);
+        fileRepository.save(file);
     }
 
     @Override
     public void updateFile(File file) {
-        fileService.updateFile(file);
+        fileRepository.save(file);
     }
 
     @Override
     public void deleteFile(Long id) {
-        fileService.deleteFile(id);
+        fileRepository.deleteById(id);
     }
 }
