@@ -64,24 +64,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 //&useUnicode=yes&characterEncoding=UTF-8
 
-/*http.csrf().disable()
-        .authorizeRequests()
-        .antMatchers("/task/**").hasAnyAuthority("USER", "ADMIN")
-        .antMatchers("/client/**").hasAnyAuthority("USER","ADMIN")
-        .antMatchers("/user/**").hasAuthority("ADMIN")
-        .anyRequest()
-        .authenticated()
-        .and()
-        .formLogin()
-        .loginPage("/login").permitAll()
-        .defaultSuccessUrl("/", true)
-        .and()
-        .rememberMe()
-        .tokenValiditySeconds((int) TimeUnit.HOURS.toSeconds(1))
-        .key("godzinka")
-        .and()
-        .logout().logoutUrl("/logout")
-        .clearAuthentication(true)
-        .invalidateHttpSession(true).deleteCookies("JSESSIONID", "rememberme")
-        .logoutSuccessUrl("/login");*/
+
 
