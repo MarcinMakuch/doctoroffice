@@ -34,7 +34,7 @@ public class FileController {
         jpaFileService.addFile(file);
         return "redirect:/client";
     }
-    @GetMapping("/upload/{id}")
+    @GetMapping("/download/{id}")
     public String downloadFile(@PathVariable Long id, Model model) {
         model.addAttribute("onefile", jpaFileService.findFile(id));
         return "";
