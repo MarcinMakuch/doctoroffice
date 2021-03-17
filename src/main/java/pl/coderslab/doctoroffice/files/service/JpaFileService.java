@@ -2,6 +2,7 @@ package pl.coderslab.doctoroffice.files.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import pl.coderslab.doctoroffice.files.entity.File;
 import pl.coderslab.doctoroffice.files.repository.FileRepository;
 

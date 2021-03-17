@@ -10,18 +10,17 @@
     <button>WRÓĆ</button>
 </a>
 
-<form:form method="post" modelAttribute="file" action="/file/upload" enctype="multipart/form-data">
+<form:form method="post" action="/file/upload" enctype="multipart/form-data">
     Select file to upload:
-    <br />
-    <input type="file" name="file"  />
-    <br />
+    <br/>
+    <input type="file" name="file"/>
+    <%--<br/>
     Description:
-    <br />
-    <input type="text" name="description" size="44" />
-    <br />
-    <br />
-    <input type="submit" value="Upload" />
-    </form>
+    <br/>
+    <input type="text" name="name" size="44"/>
+    <br/>--%>
+    <br/>
+    <input type="submit" value="Upload"/>
 </form:form>
 </body>
 </html>
