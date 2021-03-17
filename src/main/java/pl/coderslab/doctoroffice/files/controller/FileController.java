@@ -3,7 +3,6 @@ package pl.coderslab.doctoroffice.files.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +12,6 @@ import pl.coderslab.doctoroffice.files.entity.File;
 import pl.coderslab.doctoroffice.files.service.JpaFileService;
 
 import javax.transaction.Transactional;
-import javax.validation.Valid;
 import java.io.IOException;
 
 @Controller
@@ -24,10 +22,12 @@ public class FileController {
 
     private final JpaFileService jpaFileService;
 
+
     @GetMapping("/upload")
     public String chooseFile(Model model) {
         File file = new File();
         model.addAttribute("file", file);
+        model.addAttribute("files", jpaFileService.getFiles());
         return "/file/form";
     }
 

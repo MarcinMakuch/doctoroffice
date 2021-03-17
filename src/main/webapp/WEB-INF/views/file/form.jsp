@@ -9,18 +9,41 @@
 <a href='<c:url value="/client"/>'>
     <button>WRÓĆ</button>
 </a>
+<div>
+    <form:form method="post" action="/file/upload" enctype="multipart/form-data">
+        Select file to upload:
+        <br/>
+        <input type="file" name="file"/>
+        <%--<br/>
+        Description:
+        <br/>
+        <input type="text" name="name" size="44"/>
+        <br/>--%>
+        <br/>
+        <input type="submit" value="Upload"/>
+    </form:form>
+</div>
+<div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Data</th>
 
-<form:form method="post" action="/file/upload" enctype="multipart/form-data">
-    Select file to upload:
-    <br/>
-    <input type="file" name="file"/>
-    <%--<br/>
-    Description:
-    <br/>
-    <input type="text" name="name" size="44"/>
-    <br/>--%>
-    <br/>
-    <input type="submit" value="Upload"/>
-</form:form>
+        </tr>
+        <c:forEach items="${files}" var="doc">
+
+            <tr>
+                <td><c:out value="${doc.id}"/></td>
+                <td><c:out value="${doc.data}"/></td>
+<%--                <td><c:out value="${}"/></td>
+                <td><c:out value="${}"/></td>--%>
+            </tr>
+        </c:forEach>
+        </thead>
+    </table>
+</div>
+
+
 </body>
 </html>
