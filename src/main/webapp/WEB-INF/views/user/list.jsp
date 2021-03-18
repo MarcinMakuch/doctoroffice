@@ -22,7 +22,7 @@
             <td><c:out value="${user.lastName}"/></td>
             <td><a href='<c:url value="/user/edit/${user.getId()}"/>'><button>Edytuj</button></a></td>
             <td><a href='<c:url value="/user/confirm/${user.getId()}"/>'><button>Usuń</button></a></td>
-        </tr>
+                    </tr>
     </c:forEach>
     </thead>
 </table>

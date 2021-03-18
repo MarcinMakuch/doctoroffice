@@ -1,8 +1,16 @@
 package pl.coderslab.doctoroffice.files.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import pl.coderslab.doctoroffice.client.entity.Client;
+
 import javax.persistence.*;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = File.TABLE_NAME)
 public class File {
 
@@ -18,7 +26,20 @@ public class File {
     @Lob
     private byte[] data;
 
-    public File(Long id, String fileName, String fileType, byte[] data) {
+    @ManyToOne
+    private Client client;
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+
+
+/*    public File(Long id, String fileName, String fileType, byte[] data) {
         this.id = id;
         this.fileName = fileName;
         this.fileType = fileType;
@@ -26,7 +47,7 @@ public class File {
     }
 
     public File() {
-    }
+    }*/
 
     public Long getId() {
         return id;

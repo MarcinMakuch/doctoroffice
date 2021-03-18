@@ -1,7 +1,6 @@
 package pl.coderslab.doctoroffice.files.service;
 
 
-import org.springframework.web.multipart.MultipartFile;
 import pl.coderslab.doctoroffice.files.entity.File;
 
 import java.util.List;

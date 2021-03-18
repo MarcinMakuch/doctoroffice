@@ -30,6 +30,7 @@
             <td><c:out value="${client.comments}"/></td>
             <td><a href='<c:url value="/client/edit/${client.getId()}"/>'><button>Edytuj</button></a></td>
             <td><a href='<c:url value="/client/confirm/${client.getId()}"/>'><button>Usuń</button></a></td>
+            <td><a href='<c:url value="/file/upload/${client.getId()}"/>'><button>Pliki</button></a></td>
         </tr>
     </c:forEach>
     </thead>
