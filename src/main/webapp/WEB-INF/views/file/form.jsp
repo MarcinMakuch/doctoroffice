@@ -28,16 +28,17 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>Data</th>
-
+            <th>Nazwa</th>
+            <th>Typ</th>
+            <th>Pobieranie</th>
         </tr>
         <c:forEach items="${files}" var="doc">
 
             <tr>
                 <td><c:out value="${doc.id}"/></td>
-                <td><c:out value="${doc.data}"/></td>
-<%--                <td><c:out value="${}"/></td>
-                <td><c:out value="${}"/></td>--%>
+                <td><c:out value="${doc.fileName}"/></td>
+                <td><c:out value="${doc.fileType}"/></td>
+                <td><a href='c:url value="/file/download/${doc.getId()}"/>'><button>Pobierz</button></a></td>
             </tr>
         </c:forEach>
         </thead>
