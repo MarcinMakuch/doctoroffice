@@ -33,7 +33,7 @@
                 <td><c:out value="${doc.id}"/></td>
                 <td><c:out value="${doc.fileName}"/></td>
                 <td><c:out value="${doc.fileType}"/></td>
-                <td><a href='c:url value=/file/download/${doc.getId()}'><button>Pobierz</button></a></td>
+                <td><a href="/file/download/${doc.getId()}">Pobierz</a></td>
             </tr>
         </c:forEach>
         </thead>

@@ -41,11 +41,11 @@ public class FileController {
         return "redirect:/client";
     }
     @GetMapping("/download/{id}")
-    public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable Long id) {
+    public ResponseEntity<byte[]> downloadFile(@PathVariable Long id) {
         File file = jpaFileService.findFile(id);
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(file.getFileType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment:filename=\""+file.getFileName()+"\"")
-                .body(new ByteArrayResource(file.getData()));
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+file.getFileName()+"\"")
+                .body(file.getData());
     }
 }
