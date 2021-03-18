@@ -14,11 +14,6 @@
         Select file to upload:
         <br/>
         <input type="file" name="file"/>
-        <%--<br/>
-        Description:
-        <br/>
-        <input type="text" name="name" size="44"/>
-        <br/>--%>
         <br/>
         <input type="submit" value="Upload"/>
     </form:form>
@@ -38,7 +33,7 @@
                 <td><c:out value="${doc.id}"/></td>
                 <td><c:out value="${doc.fileName}"/></td>
                 <td><c:out value="${doc.fileType}"/></td>
-                <td><a href='c:url value="/file/download/${doc.getId()}"/>'><button>Pobierz</button></a></td>
+                <td><a href='c:url value=/file/download/${doc.getId()}'><button>Pobierz</button></a></td>
             </tr>
         </c:forEach>
         </thead>
