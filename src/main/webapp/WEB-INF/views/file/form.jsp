@@ -11,16 +11,12 @@
 </a>
 <div>
     <form:form method="post" enctype="multipart/form-data" modelAttribute="file">
-        Select file to upload:
+        Wybierz plik do przesłania:
         <br/>
         <input type="file" name="file"/>
         <br/>
-        Pacjent: <br>
-        <form:select path="client">
-            <form:option value="0">-- wybierz --</form:option>
-            <form:options items="${clients}" itemValue="id" itemLabel="lastName"/></form:select><br>
-        <form:errors path="client"/><br>
-        <input type="submit" value="Upload"/>
+
+        <input type="submit" value="Prześlij"/>
     </form:form>
 </div>
 <div>
@@ -31,6 +27,7 @@
             <th>Nazwa</th>
             <th>Typ</th>
             <th>Pobieranie</th>
+            <th>Usuń</th>
         </tr>
         <c:forEach items="${files}" var="doc">
 
@@ -39,6 +36,7 @@
                 <td><c:out value="${doc.fileName}"/></td>
                 <td><c:out value="${doc.fileType}"/></td>
                 <td><a href="/file/download/${doc.getId()}">Pobierz</a></td>
+                <td><a href="/file/confirm/${doc.getId()}">Usuń</a></td>
             </tr>
         </c:forEach>
         </thead>

@@ -43,4 +43,8 @@ public class JpaUserService implements UserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+    public List<User> getUsersByRoleUser() {
+        return userRepository.getUsersByRoleUser();
+    }
 }

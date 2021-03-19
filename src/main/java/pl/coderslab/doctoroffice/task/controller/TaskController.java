@@ -29,7 +29,7 @@ public class TaskController {
 
     @ModelAttribute("users")
     public List<User> getUsers() {
-        return jpaUserService.getUsers();
+        return jpaUserService.getUsersByRoleUser();
     }
 
     @ModelAttribute("clients")

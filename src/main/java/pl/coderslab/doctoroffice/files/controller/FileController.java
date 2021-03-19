@@ -42,18 +42,33 @@ public class FileController {
 
     @PostMapping("/upload/{clientId}")
     public String uploadFile(@RequestParam("file") MultipartFile doc, @PathVariable Long clientId, File file) throws IOException {
+        Client client = jpaClientService.findClient(clientId);
+        file.setClient(client);
         file.setFileName(doc.getOriginalFilename());
         file.setFileType(doc.getContentType());
         file.setData(doc.getBytes());
         jpaFileService.addFile(file);
         return "redirect:/client";
     }
+
     @GetMapping("/download/{id}")
     public ResponseEntity<byte[]> downloadFile(@PathVariable Long id) {
         File file = jpaFileService.findFile(id);
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(file.getFileType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+file.getFileName()+"\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
                 .body(file.getData());
     }
-}
+
+    @GetMapping("/confirm/{id}")
+    public String deletefile(Model model, @PathVariable Long id) {
+        File file = jpaFileService.findFile(id);
+        model.addAttribute("file", file);
+        return "file/confirm";
+    }
+    @GetMapping("/remove/{id}")
+    public String deleteTask(@PathVariable Long id) {
+        jpaFileService.deleteFile(id);
+        return "redirect:/client";
+    }
+    }
