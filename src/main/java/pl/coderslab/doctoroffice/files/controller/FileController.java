@@ -15,6 +15,7 @@ import pl.coderslab.doctoroffice.files.service.JpaFileService;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @Transactional
@@ -24,6 +25,11 @@ public class FileController {
 
     private final JpaFileService jpaFileService;
     private final JpaClientService jpaClientService;
+
+    @ModelAttribute("clients")
+    public List<Client> getClients() {
+        return jpaClientService.getClients();
+    }
 
 
     @GetMapping("/upload/{clientId}")
@@ -36,8 +42,6 @@ public class FileController {
 
     @PostMapping("/upload/{clientId}")
     public String uploadFile(@RequestParam("file") MultipartFile doc, @PathVariable Long clientId, File file) throws IOException {
-        Client client = jpaClientService.findClient(clientId);
-        file.setClient(client);
         file.setFileName(doc.getOriginalFilename());
         file.setFileType(doc.getContentType());
         file.setData(doc.getBytes());

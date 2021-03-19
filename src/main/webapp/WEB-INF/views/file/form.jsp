@@ -10,11 +10,16 @@
     <button>WRÓĆ</button>
 </a>
 <div>
-    <form:form method="post" action="/file/upload" enctype="multipart/form-data">
+    <form:form method="post" enctype="multipart/form-data" modelAttribute="file">
         Select file to upload:
         <br/>
         <input type="file" name="file"/>
         <br/>
+        Pacjent: <br>
+        <form:select path="client">
+            <form:option value="0">-- wybierz --</form:option>
+            <form:options items="${clients}" itemValue="id" itemLabel="lastName"/></form:select><br>
+        <form:errors path="client"/><br>
         <input type="submit" value="Upload"/>
     </form:form>
 </div>
