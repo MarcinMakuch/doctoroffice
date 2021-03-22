@@ -55,8 +55,11 @@ Dzisiejsze wizyty
 <br>
 
 <div>
-    <input type="text" name="search">
-    <button type="submit">Szukaj</button>
+    <form:form action="/task/search" method="post">
+        <input type="text" name="lastname">
+        <button type="submit">Szukaj</button>
+    </form:form>
+
 </div>
 </body>
 </html>
