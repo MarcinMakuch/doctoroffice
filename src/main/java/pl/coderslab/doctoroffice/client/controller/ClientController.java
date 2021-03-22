@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.doctoroffice.client.entity.Client;
 import pl.coderslab.doctoroffice.client.service.JpaClientService;
-import pl.coderslab.doctoroffice.task.entity.Task;
 import pl.coderslab.doctoroffice.task.service.JpaTaskService;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.util.List;
+
 
 
 @Controller

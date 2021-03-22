@@ -40,12 +40,6 @@ public class JpaTaskService implements TaskService {
         taskRepository.save(task);
     }
 
-/*    @Override
-    public void addTask(Task task) throws IllegalArgumentException {
-        Optional <Task> freeDate = taskRepository.manualFindDateAndTimeFromTasks(task.getDate(), task.getTime());
-        if (!freeDate.isPresent())
-            taskRepository.save(task);
-    }*/
 
     @Override
     public void updateTask(Task task) {
@@ -59,6 +53,10 @@ public class JpaTaskService implements TaskService {
 
     public List<Task> getTodaySortedTasks(Date date) {
         return taskRepository.getTodayTasksOrderByDateAsc(date);
+    }
+
+    public List<Task> getClientTasksByHisLastName(String lastname) {
+        return taskRepository.getTasksByClientLastName(lastname);
     }
 
 }

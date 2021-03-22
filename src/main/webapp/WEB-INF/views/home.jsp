@@ -14,19 +14,19 @@
 </head>
 <body>
 <div>
-    <p><a href="<c:url value="/user"/>" name="">
+    <p><a href="<c:url value="/user"/>" >
         <button>Użytkownicy</button>
     </a></p>
 
-    <p><a href="<c:url value="/client"/>" name="">
+    <p><a href="<c:url value="/client"/>" >
         <button>Pajcenci</button>
     </a></p>
 
-    <p><a href="<c:url value="/task"/>" name="">
+    <p><a href="<c:url value="/task"/>" >
         <button>Wizyty</button>
     </a></p>
 
-    <p><a href="<c:url value="/logout"/>" name="">
+    <p><a href="<c:url value="/logout"/>" >
         <button>Wyloguj</button>
     </a></p>
 
@@ -52,30 +52,11 @@ Dzisiejsze wizyty
     </c:forEach>
     </thead>
 </table>
-
-<%--<c:forEach var="task" items="${tasks}" varStatus="status">
-       <c:if test="${status.last}">${task.id}</c:if>
-    </c:forEach>--%>
+<br>
 
 <div>
-<%--    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-    <jsp:useBean id="now" class="java.util.Date"/>
-    <fmt:formatDate value="${now}" dateStyle="long"/>
-    <fmt:formatDate value="${now}" pattern="dd-MM-yyyy HH:mm:ss a z" />--%>
-
-</div>
-<div>
-    <%--<table border="1">
-        <c:forEach items="${lastFive}" var="item">
-            <tr>
-                <td>${item.id}</td>
-                <td>${item.title}</td>
-                <td>${item.author}</td>
-                <td>${item.content}</td>
-            </tr>
-        </c:forEach>
-    </table>--%>
+    <input type="text" name="search">
+    <button type="submit">Szukaj</button>
 </div>
 </body>
 </html>

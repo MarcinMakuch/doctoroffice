@@ -81,9 +81,16 @@ public class TaskController {
         model.addAttribute("task", task);
         return "task/confirm";
     }
+
     @GetMapping("/remove/{id}")
     public String deleteTask(@PathVariable Long id) {
         jpaTaskService.deleteTask(id);
         return "redirect:/task";
+    }
+
+    @GetMapping("/search/{lastname}")
+    public String searchTasks (@PathVariable String lastname, Model model) {
+        model.addAttribute("searchname", jpaTaskService.getClientTasksByHisLastName(lastname));
+        return "task/search";
     }
 }
