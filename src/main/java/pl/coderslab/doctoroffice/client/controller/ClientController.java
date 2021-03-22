@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.doctoroffice.client.entity.Client;
 import pl.coderslab.doctoroffice.client.service.JpaClientService;
+import pl.coderslab.doctoroffice.task.entity.Task;
+import pl.coderslab.doctoroffice.task.service.JpaTaskService;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.List;
+
 
 @Controller
 @Transactional
@@ -21,21 +25,23 @@ import javax.validation.Valid;
 public class ClientController {
 
     private final JpaClientService jpaClientService;
-
+    private final JpaTaskService jpaTaskService;
 
     @GetMapping("")
     public String getClients(Model model) {
         model.addAttribute("clients", jpaClientService.getClients());
         return "/client/list";
     }
+
     @GetMapping("/add")
     public String formClient(Model model) {
         Client client = new Client();
         model.addAttribute("client", client);
         return "/client/form";
     }
+
     @PostMapping("/add")
-    public String addClient(@Valid Client client, BindingResult result){
+    public String addClient(@Valid Client client, BindingResult result) {
         if (result.hasErrors()) {
             return "/client/form";
         }
@@ -44,10 +50,11 @@ public class ClientController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editClient (@PathVariable Long id, Model model) {
+    public String editClient(@PathVariable Long id, Model model) {
         model.addAttribute("client", jpaClientService.findClient(id));
         return "client/form";
     }
+
     @PostMapping("/edit/{id}")
     public String saveClient(@Valid Client client, BindingResult result) {
         if (result.hasErrors()) {
@@ -56,12 +63,15 @@ public class ClientController {
         jpaClientService.updateClient(client);
         return "redirect:/client";
     }
+
     @GetMapping("/confirm/{id}")
     public String deleteClient(Model model, @PathVariable Long id) {
         Client client = jpaClientService.findClient(id);
         model.addAttribute("client", client);
         return "client/confirm";
+
     }
+
     @GetMapping("/remove/{id}")
     public String deleteUser(@PathVariable Long id) {
         jpaClientService.deleteClient(id);

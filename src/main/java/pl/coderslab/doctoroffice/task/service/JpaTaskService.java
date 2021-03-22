@@ -33,8 +33,8 @@ public class JpaTaskService implements TaskService {
 
     @Override
     public void addTask(Task task) {
-        Optional <Task> freeDate = taskRepository.manualFindDateAndTimeFromTasks(task.getDate(), task.getTime());
-        if (freeDate.isPresent()){
+        Optional<Task> freeDate = taskRepository.manualFindDateAndTimeFromTasks(task.getDate(), task.getTime());
+        if (freeDate.isPresent()) {
             throw new IllegalStateException("Niestety wybrana data jest zajęta, wybierz inną datę.");
         }
         taskRepository.save(task);
@@ -60,7 +60,6 @@ public class JpaTaskService implements TaskService {
     public List<Task> getTodaySortedTasks(Date date) {
         return taskRepository.getTodayTasksOrderByDateAsc(date);
     }
-
 
 }
 
