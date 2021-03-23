@@ -88,9 +88,10 @@ public class TaskController {
         return "redirect:/task";
     }
 
-    @PostMapping("/search")
-    public String searchTasks (@RequestParam String lastname, Model model) {
-        model.addAttribute("searchname", jpaTaskService.getClientTasksByHisLastName(lastname));
-        return "task/search";
+    @GetMapping("/search?lastname={lastname}")
+    public String searchTasks (@RequestParam ("lastname") String lastname, Model model) {
+       List <Task> clientTasks = jpaTaskService.getClientTasksByHisLastName(lastname);
+       model.addAttribute("searchname", clientTasks);
+       return "task/search";
     }
 }

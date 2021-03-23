@@ -52,14 +52,15 @@ Dzisiejsze wizyty
     </c:forEach>
     </thead>
 </table>
-<br>
 
 <div>
     <form:form action="/task/search" method="post">
-        <input type="text" name="lastname">
+        <input type="text" name="lastname" >
         <button type="submit">Szukaj</button>
     </form:form>
-
 </div>
+
+
+
 </body>
 </html>

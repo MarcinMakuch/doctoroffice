@@ -25,8 +25,8 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("select t from Task t where t.date=?1 order by t.time asc")
     List<Task> getTodayTasksOrderByDateAsc(@Param("date") Date date);
 
-    @Query("select t from Task t where t.client.lastName =?1")
-    List<Task> getTasksByClientLastName(@Param ("clientlastname") String lastname);
+    @Query("select t from Task t where t.client.lastName =?1 order by t.date asc, t.time asc")
+    List<Task> getTasksByClientLastName(@Param ("lastname") String lastname);
 
-    List <Task> getTasksByClientLastNameOrClientPesel();
+
 }
