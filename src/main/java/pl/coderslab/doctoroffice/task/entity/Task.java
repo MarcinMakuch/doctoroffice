@@ -40,4 +40,3 @@ public class Task {
     private User user;
 
 }
-//@Pattern(regexp="^([0-1]?[0-9]|2[0-3]):[0][0]$", message="prosze wybrac pelna godzine")

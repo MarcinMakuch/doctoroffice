@@ -54,13 +54,11 @@ Dzisiejsze wizyty
 </table>
 
 <div>
-    <form:form action="/task/search" method="post">
-        <input type="text" name="lastname" >
+    <form:form action="/task/search" method="get">
+        <input type="text" name="lastname">
         <button type="submit">Szukaj</button>
     </form:form>
 </div>
-
-
 
 </body>
 </html>

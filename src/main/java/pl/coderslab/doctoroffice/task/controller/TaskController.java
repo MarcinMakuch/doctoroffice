@@ -88,7 +88,7 @@ public class TaskController {
         return "redirect:/task";
     }
 
-    @GetMapping("/search?lastname={lastname}")
+    @GetMapping("/search")
     public String searchTasks (@RequestParam ("lastname") String lastname, Model model) {
        List <Task> clientTasks = jpaTaskService.getClientTasksByHisLastName(lastname);
        model.addAttribute("searchname", clientTasks);

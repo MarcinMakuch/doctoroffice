@@ -26,7 +26,7 @@
     <form:input type="date" path="date"/><br>
     <form:errors path="date"/><br>
     Godzina: <br>
-    <form:input type="time" path="time"/><br>
+    <form:input type="time" path="time" step="3600"/><br>
     <form:errors path="time"/><br>
 
     <button type="submit">Zapisz</button>

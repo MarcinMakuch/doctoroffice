@@ -8,13 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.coderslab.doctoroffice.client.entity.Client;
 import pl.coderslab.doctoroffice.client.service.JpaClientService;
+import pl.coderslab.doctoroffice.task.entity.Task;
 import pl.coderslab.doctoroffice.task.service.JpaTaskService;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-
+import java.util.List;
 
 
 @Controller
@@ -64,11 +66,14 @@ public class ClientController {
     }
 
     @GetMapping("/confirm/{id}")
-    public String deleteClient(Model model, @PathVariable Long id) {
+    public String deleteClient(Model model, @PathVariable Long id, RedirectAttributes redirectAttributes) {
         Client client = jpaClientService.findClient(id);
         model.addAttribute("client", client);
-        return "client/confirm";
-
+        List <Task> deleteIfClientEmpty = jpaTaskService.getTasksByClientId(id);
+        if (deleteIfClientEmpty.isEmpty()) {
+            return "client/confirm";
+        } else redirectAttributes.addFlashAttribute("message", "klient ma aktywne wizyty, sprawdź kalendarz");
+        return "redirect:/client";
     }
 
     @GetMapping("/remove/{id}")

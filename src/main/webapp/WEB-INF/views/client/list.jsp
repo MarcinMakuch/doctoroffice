@@ -9,7 +9,7 @@
 <a href='<c:url value="/"/>'><button>WRÓĆ</button></a>
 <br>
 <a href='<c:url value="/client/add"/>'><button>Dodaj nowego klienta</button></a>
-<p><c:out value="${message}"/></p>
+<h3><p><c:out value="${message}"/></p></h3>
 <table border="1">
     <thead>
     <tr>

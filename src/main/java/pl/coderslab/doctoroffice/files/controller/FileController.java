@@ -66,9 +66,10 @@ public class FileController {
         model.addAttribute("file", file);
         return "file/confirm";
     }
+
     @GetMapping("/remove/{id}")
     public String deleteTask(@PathVariable Long id) {
         jpaFileService.deleteFile(id);
         return "redirect:/client";
     }
-    }
+}

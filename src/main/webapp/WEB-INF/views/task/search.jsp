@@ -1,11 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+
 <html>
 <head>
     <title>Wyszukiwanie ... </title>
 </head>
 <body>
+
+<p>Wizyty dla pacjenta: <%= request.getParameter("lastname")%></p>
 
 
 <table border="1">
@@ -27,6 +35,10 @@
     </c:forEach>
     </thead>
 </table>
+
+<div style="color: #3d4877;">
+    <button onclick="goBack()">Powrót</button>
+</div>
 
 </body>
 </html>
