@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.coderslab.doctoroffice.client.entity.Client;
 import pl.coderslab.doctoroffice.client.service.JpaClientService;
+import pl.coderslab.doctoroffice.files.entity.File;
+import pl.coderslab.doctoroffice.files.service.JpaFileService;
 import pl.coderslab.doctoroffice.task.entity.Task;
 import pl.coderslab.doctoroffice.task.service.JpaTaskService;
 
@@ -27,6 +29,7 @@ public class ClientController {
 
     private final JpaClientService jpaClientService;
     private final JpaTaskService jpaTaskService;
+    private final JpaFileService jpaFileService;
 
     @GetMapping("")
     public String getClients(Model model) {
@@ -69,10 +72,11 @@ public class ClientController {
     public String deleteClient(Model model, @PathVariable Long id, RedirectAttributes redirectAttributes) {
         Client client = jpaClientService.findClient(id);
         model.addAttribute("client", client);
-        List <Task> deleteIfClientEmpty = jpaTaskService.getTasksByClientId(id);
-        if (deleteIfClientEmpty.isEmpty()) {
+        List <Task> deleteIfClientTasksAreEmpty = jpaTaskService.getTasksByClientId(id);
+        List <File> deleteIfClientFilesAreEmpty = jpaFileService.getManualFilesByClientId(id);
+        if (deleteIfClientTasksAreEmpty.isEmpty() && deleteIfClientFilesAreEmpty.isEmpty()) {
             return "client/confirm";
-        } else redirectAttributes.addFlashAttribute("message", "klient ma aktywne wizyty, sprawdź kalendarz");
+        } else redirectAttributes.addFlashAttribute("message", "klient ma nieusunięte wizyty lub pliki, sprawdź klienta");
         return "redirect:/client";
     }
 

@@ -14,7 +14,7 @@
 <body>
 
 <p>Wizyty dla pacjenta: <%= request.getParameter("lastname")%></p>
-
+<h3><p><c:out value="${message}"/></p></h3>
 
 <table border="1">
     <thead>

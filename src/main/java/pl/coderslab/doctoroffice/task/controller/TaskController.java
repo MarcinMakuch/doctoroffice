@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.coderslab.doctoroffice.client.entity.Client;
 import pl.coderslab.doctoroffice.client.service.JpaClientService;
 import pl.coderslab.doctoroffice.task.entity.Task;
@@ -89,8 +90,12 @@ public class TaskController {
     }
 
     @GetMapping("/search")
-    public String searchTasks (@RequestParam ("lastname") String lastname, Model model) {
+    public String searchTasks (@RequestParam ("lastname") String lastname, Model model, RedirectAttributes redirectAttributes) {
        List <Task> clientTasks = jpaTaskService.getClientTasksByHisLastName(lastname);
+       if (clientTasks.isEmpty()) {
+           redirectAttributes.addFlashAttribute("message", "Podany klient nie istnieje lub nie ma umówionych spotkań");
+           return "redirect:/home";
+       }
        model.addAttribute("searchname", clientTasks);
        return "task/search";
     }
