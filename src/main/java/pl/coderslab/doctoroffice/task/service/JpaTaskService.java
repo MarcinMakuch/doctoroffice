@@ -58,6 +58,9 @@ public class JpaTaskService implements TaskService {
     public List<Task> getClientTasksByHisLastName(String lastname) {
         return taskRepository.getTasksByClientLastName(lastname);
     }
+    public List<Task> getClientTasksByHisPesel(String pesel) {
+        return taskRepository.getTasksByClientPesel(pesel);
+    }
     public List<Task> getTasksByClientId(Long id) {
         return taskRepository.getTasksByClientId(id);
     }

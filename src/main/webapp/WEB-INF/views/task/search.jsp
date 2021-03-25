@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<p>Wizyty dla pacjenta: <%= request.getParameter("lastname")%></p>
+<p>Wizyty dla pacjenta: <%= request.getParameter("question")%></p>
 <h3><p><c:out value="${message}"/></p></h3>
 
 <table border="1">

@@ -60,15 +60,16 @@ public class TaskController {
         jpaTaskService.addTask(task);
         return "redirect:/task";
     }
+
     @GetMapping("/edit/{id}")
-    public String editTask(@PathVariable Long id, Model model){
+    public String editTask(@PathVariable Long id, Model model) {
         model.addAttribute("task", jpaTaskService.findTask(id));
         return "task/form";
     }
 
     @PostMapping("/edit/{id}")
-    public String saveTask (@Valid Task task, BindingResult result){
-        if(result.hasErrors()){
+    public String saveTask(@Valid Task task, BindingResult result) {
+        if (result.hasErrors()) {
             return "/task/form";
         }
         jpaTaskService.updateTask(task);
@@ -90,13 +91,29 @@ public class TaskController {
     }
 
     @GetMapping("/search")
-    public String searchTasks (@RequestParam ("lastname") String lastname, Model model, RedirectAttributes redirectAttributes) {
-       List <Task> clientTasks = jpaTaskService.getClientTasksByHisLastName(lastname);
-       if (clientTasks.isEmpty()) {
-           redirectAttributes.addFlashAttribute("message", "Podany klient nie istnieje lub nie ma umówionych spotkań");
-           return "redirect:/home";
-       }
-       model.addAttribute("searchname", clientTasks);
-       return "task/search";
+    public String searchTasks(@RequestParam("question") String question , Model model, RedirectAttributes redirectAttributes) {
+        List<Task> clientTasksByName = jpaTaskService.getClientTasksByHisLastName(question);
+        List <Task> clientTasksByPesel = jpaTaskService.getClientTasksByHisPesel(question);
+        if (!clientTasksByName.isEmpty()) {
+            model.addAttribute("searchname", clientTasksByName);
+            return "task/search";
+        } else if (!clientTasksByPesel.isEmpty()) {
+            model.addAttribute("searchname", clientTasksByPesel);
+            return "task/search";
+        } else redirectAttributes.addFlashAttribute("message", "Podany klient nie istnieje lub nie ma umówionych spotkań");
+        return "redirect:/";
     }
 }
+
+/*    @GetMapping("/search")
+    public String searchTasks(@RequestParam("question") String question , Model model, RedirectAttributes redirectAttributes) {
+        List<Task> clientTasksByName = jpaTaskService.getClientTasksByHisLastName(question);
+        List <Task> clientTasksByPesel = jpaTaskService.getClientTasksByHisPesel(question);
+        if (clientTasksByName.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Podany klient nie istnieje lub nie ma umówionych spotkań");
+            return "redirect:/";
+        } else model.addAttribute("searchname", clientTasksByName);
+        return "task/search";
+    }*/
+
+

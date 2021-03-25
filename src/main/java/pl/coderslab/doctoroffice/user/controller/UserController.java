@@ -69,7 +69,7 @@ public class UserController {
     public String deleteUser(Model model, @PathVariable Long id, RedirectAttributes redirectAttributes) {
         User user = jpaUserService.findUser(id);
         model.addAttribute("user", user);
-        List<Task> deleteIfUserEmpty = jpaTaskService.getTasksByUserId(id);
+        List <Task> deleteIfUserEmpty = jpaTaskService.getTasksByUserId(id);
         if (deleteIfUserEmpty.isEmpty()) {
             return "user/confirm";
         } else redirectAttributes.addFlashAttribute("message", "użytkownik ma aktywne wizyty, sprawdź kalendarz");

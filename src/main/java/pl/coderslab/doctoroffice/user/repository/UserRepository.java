@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import pl.coderslab.doctoroffice.user.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -13,4 +14,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select u from User u where u.role='USER'")
     List<User> getUsersByRoleUser();
+
+    Optional<User> findUserByUsername(String username);
 }

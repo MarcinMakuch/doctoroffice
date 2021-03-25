@@ -7,6 +7,7 @@ import pl.coderslab.doctoroffice.user.entity.User;
 import pl.coderslab.doctoroffice.user.repository.UserRepository;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -29,6 +30,10 @@ public class JpaUserService implements UserService {
 
     @Override
     public void addUser(User user) {
+        Optional<User> checkUserName = userRepository.findUserByUsername(user.getUsername());
+        if (checkUserName.isPresent()) {
+            throw new IllegalArgumentException("nazwa użytkownika jest już zajęta");
+        }
         String pass = passwordEncoder.encode(user.getPassword());
         user.setPassword(pass);
         userRepository.save(user);
