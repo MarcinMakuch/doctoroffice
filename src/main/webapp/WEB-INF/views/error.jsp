@@ -8,6 +8,7 @@
 </script>
 <html>
 <head>
+    <link href="<c:url value="/theme/css/sb-admin-2.css"/>" rel="stylesheet">
     <title>Error Page</title>
 </head>
 <body>

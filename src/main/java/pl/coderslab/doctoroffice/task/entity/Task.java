@@ -25,7 +25,7 @@ public class Task {
     Long id;
 
     @NotNull
-    @FutureOrPresent
+    //@FutureOrPresent
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date date;

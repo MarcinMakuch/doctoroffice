@@ -9,6 +9,7 @@
 
 <html>
 <head>
+    <link href="<c:url value="/theme/css/sb-admin-2.css"/>" rel="stylesheet">
     <title>Wyszukiwanie ... </title>
 </head>
 <body>
@@ -16,7 +17,9 @@
 <p>Wizyty dla pacjenta: <%= request.getParameter("question")%></p>
 <h3><p><c:out value="${message}"/></p></h3>
 
-<table border="1">
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
     <thead>
     <tr>
         <th>Rehabilitant</th>
@@ -35,9 +38,11 @@
     </c:forEach>
     </thead>
 </table>
+    </div>
+</div>
 
 <div style="color: #3d4877;">
-    <button onclick="goBack()">Powrót</button>
+    <button class="btn btn-light" onclick="goBack()">Powrót</button>
 </div>
 
 </body>

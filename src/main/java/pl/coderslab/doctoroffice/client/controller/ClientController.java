@@ -76,7 +76,7 @@ public class ClientController {
         List <File> deleteIfClientFilesAreEmpty = jpaFileService.getManualFilesByClientId(id);
         if (deleteIfClientTasksAreEmpty.isEmpty() && deleteIfClientFilesAreEmpty.isEmpty()) {
             return "client/confirm";
-        } else redirectAttributes.addFlashAttribute("message", "klient ma nieusunięte wizyty lub pliki, sprawdź klienta");
+        } else redirectAttributes.addFlashAttribute("message", "klient ma wizyty lub pliki, sprawdź klienta");
         return "redirect:/client";
     }
 

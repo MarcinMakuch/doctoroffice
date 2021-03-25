@@ -3,11 +3,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link href="<c:url value="/theme/css/sb-admin-2.css"/>" rel="stylesheet">
     <title>Dodaj wizytę</title>
 </head>
 <body>
 <a href='<c:url value="/task"/>'>
-    <button>WRÓĆ</button>
+    <button type="button" class="btn btn-light">WRÓĆ</button>
 </a>
 <p><c:out value="${message}"/></p>
 <form:form method="post" modelAttribute="task">
@@ -29,7 +30,7 @@
     <form:input type="time" path="time" step="3600"/><br>
     <form:errors path="time"/><br>
 
-    <button type="submit">Zapisz</button>
+    <button type="submit" class="btn btn-success">Zapisz</button>
 </form:form>
 </body>
 </html>

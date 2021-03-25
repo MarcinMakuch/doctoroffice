@@ -4,9 +4,10 @@
 <html>
 <head>
     <title>Dodaj użytkownika</title>
+    <link href="<c:url value="/theme/css/sb-admin-2.css"/>" rel="stylesheet">
 </head>
 <body>
-<a href='<c:url value="/user"/>'><button>WRÓĆ</button></a>
+<a href='<c:url value="/user"/>'><button type="button" class="btn btn-light">WRÓĆ</button></a>
 
 <form:form method="post" modelAttribute="user">
     <label>Imię</label><br>
@@ -24,7 +25,7 @@
     <label>ROLE</label><br>
     <form:input path="role"/>
     <form:errors path="role"/><br>
-    <button type="submit">Zapisz</button>
+    <button type="submit" class="btn btn-success">Zapisz</button>
 </form:form>
 </body>
 </html>
