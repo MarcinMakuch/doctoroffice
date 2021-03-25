@@ -24,7 +24,7 @@
         <th>Data</th>
         <th>Godzina</th>
     </tr>
-    <c:forEach items="${searchname}" var="search">
+    <c:forEach items="${searchbar}" var="search">
 
         <tr>
             <td><c:out value="${search.user.lastName}"/></td>

@@ -95,10 +95,10 @@ public class TaskController {
         List<Task> clientTasksByName = jpaTaskService.getClientTasksByHisLastName(question);
         List <Task> clientTasksByPesel = jpaTaskService.getClientTasksByHisPesel(question);
         if (!clientTasksByName.isEmpty()) {
-            model.addAttribute("searchname", clientTasksByName);
+            model.addAttribute("searchbar", clientTasksByName);
             return "task/search";
         } else if (!clientTasksByPesel.isEmpty()) {
-            model.addAttribute("searchname", clientTasksByPesel);
+            model.addAttribute("searchbar", clientTasksByPesel);
             return "task/search";
         } else redirectAttributes.addFlashAttribute("message", "Podany klient nie istnieje lub nie ma umówionych spotkań");
         return "redirect:/";

@@ -12,9 +12,9 @@
 </head>
 <body>
 
-<div style="color: #3d4877;">
+<%--<div style="color: #3d4877;">
     <h3>Pojawił się błąd</h3>
-</div>
+</div>--%>
 <div style="color: #3d4877;">
     <h3>
         <%= exception.getCause().getMessage() %>
