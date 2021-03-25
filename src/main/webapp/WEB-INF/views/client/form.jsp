@@ -17,7 +17,7 @@
         <form:input class="form-control" path="firstName"/>
         <form:errors path="firstName"/>
         Nazwisko:
-        <form:input class="form-control" path="lastName"/>
+        <form:input class="form-control" path="lastName" size="100"/>
         <form:errors path="lastName"/>
         PESEL:
         <form:input class="form-control" type="number" path="pesel"/>
